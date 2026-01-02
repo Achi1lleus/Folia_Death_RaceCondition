@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "folia-race",
+  "version": "${version}",
+  "name": "Folia Race Condition Dupe",
+  "description": "Meteor Client module exploiting Folia's isRemoved() death handling bug. Edge case research.",
+  "authors": [
+    "Achi1lleus"
+  ],
+  "contact": {
+    "sources": "https://github.com/Achi1lleus/Folia_isRemoved_EdgeCase"
+  },
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "meteor": [
+      "com.foliarace.FoliaRaceAddon"
+    ]
+  },
+  "depends": {
+    "java": ">=21",
+    "minecraft": ">=1.21",
+    "meteor-client": ">=0.5.8"
+  }
+}
+

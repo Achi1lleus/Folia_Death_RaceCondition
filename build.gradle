@@ -1,0 +1,53 @@
+plugins {
+    id "fabric-loom" version "1.10.+"
+    id "maven-publish"
+}
+
+version = project.property("mod_version")
+group = project.property("maven_group")
+
+base {
+    archivesName = project.property("archives_base_name")
+}
+
+repositories {
+    mavenCentral()
+    maven { url = "https://maven.meteordev.org/releases" }
+    maven { url = "https://maven.meteordev.org/snapshots" }
+}
+
+dependencies {
+    // Minecraft
+    minecraft "com.mojang:minecraft:${project.property("minecraft_version")}"
+    mappings "net.fabricmc:yarn:${project.property("yarn_mappings")}:v2"
+    
+    // Fabric
+    modImplementation "net.fabricmc:fabric-loader:${project.property("loader_version")}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.property("fabric_version")}"
+    
+    // Meteor Client
+    modImplementation "meteordevelopment:meteor-client:${project.property("meteor_version")}"
+}
+
+processResources {
+    inputs.property "version", project.version
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version
+    }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+    withSourcesJar()
+}
+
+jar {
+    from("LICENSE")
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = "UTF-8"
+    options.release = 21
+}
+
