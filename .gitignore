@@ -1,0 +1,24 @@
+# Build output
+build/
+out/
+*.class
+*.jar
+
+# Gradle
+.gradle/
+gradle-wrapper.jar
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.launch
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Minecraft
+run/
+logs/
+
